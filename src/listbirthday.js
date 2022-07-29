@@ -1,12 +1,16 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
-import ListGroup from 'react-bootstrap/ListGroup';
 import {birthday_info} from './data'
 import {useState} from 'react'
-import Image from 'react-bootstrap/Image'
-function WithHeaderStyledExample() {
+
+const WithHeaderStyledExample=()=> {
   const [data,setData]= useState(birthday_info)
+  const remove=(id)=>{
+    // setData((info)=>{
+    //   return info.filter((i)=>i.id!==2)
+    // })
+    setData([])
+  }
   return (
     <>
     <Card className='card'>
@@ -15,9 +19,9 @@ function WithHeaderStyledExample() {
         <div className='List mb-3'>
       {
         data.map((info)=>{
-          const {name,date,url}=info
+          const {id,name,date,url}=info
           return(
-            <div className='tiles d-flex '>
+            <div className='tiles d-flex' key={id}>
               <img className='bImg' src={url}></img>
               <div className='title'>
                 <div className='suffix'>
@@ -33,7 +37,7 @@ function WithHeaderStyledExample() {
         })
       }
       </div>
-      <button type="button" class="btn btn-primary" style={{width:'100%'}}>Clear Birthday</button>
+      <button type="button" onClick={()=>{remove()}} class="btn btn-primary" style={{width:'100%'}}>Clear Birthday</button>
       </Card.Body>
     </Card>
     </>
