@@ -4,12 +4,26 @@ import {birthday_info} from './data'
 import {useState} from 'react'
 
 const WithHeaderStyledExample=()=> {
+  var clear =1
   const [data,setData]= useState(birthday_info)
   const remove=(id)=>{
     // setData((info)=>{
     //   return info.filter((i)=>i.id!==2)
     // })
     setData([])
+  }
+  const addClear=()=>{
+    alert(clear)
+    if(clear===1){
+      setData([])
+      clear=0    
+    }
+    else if(clear===0){
+      alert(clear)
+      setData(birthday_info)
+      clear=1
+    }
+    alert(clear)
   }
   return (
     <>
@@ -37,7 +51,7 @@ const WithHeaderStyledExample=()=> {
         })
       }
       </div>
-      <button type="button" onClick={()=>{remove()}} class="btn btn-primary" style={{width:'100%'}}>Clear Birthday</button>
+      <button type="button" onClick={()=>{addClear()}} class="btn btn-primary" style={{width:'100%'}}>Clear Birthday</button>
       </Card.Body>
     </Card>
     </>
