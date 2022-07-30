@@ -2,9 +2,8 @@ import React from 'react'
 import Card from 'react-bootstrap/Card';
 import {birthday_info} from './data'
 import {useState} from 'react'
-
+var clear=1
 const WithHeaderStyledExample=()=> {
-  var clear =1
   const [data,setData]= useState(birthday_info)
   const remove=(id)=>{
     // setData((info)=>{
@@ -13,17 +12,17 @@ const WithHeaderStyledExample=()=> {
     setData([])
   }
   const addClear=()=>{
-    alert(clear)
+    const btn = document.querySelector(".btn")
     if(clear===1){
       setData([])
-      clear=0    
+      clear=0
+      btn.innerHTML="Show Birthday"   
     }
-    else if(clear===0){
-      alert(clear)
+    else if(clear===0){ 
       setData(birthday_info)
       clear=1
+      btn.innerHTML="Clear Birthday"
     }
-    alert(clear)
   }
   return (
     <>
